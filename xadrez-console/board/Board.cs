@@ -11,7 +11,12 @@ public class Board {
         parts        = new Parts[line, column];
     }
 
-    public Parts part(int line, int column) {
+    public Parts Part(int line, int column) {
         return parts[line, column];
+    }
+
+    public void IntroPart(Parts p, Position position) {
+        parts[position.line, position.column] = p;
+        p.position                            = position;
     }
 }
