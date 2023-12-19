@@ -1,3 +1,14 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using xadrez_console.board;
 
-Console.WriteLine("Hello, World!");
+namespace xadrez_console;
+
+class Program {
+    static void Main(String[] args)
+    {
+        Position P;
+        P = new Position(4, 3);
+
+        Console.WriteLine(P);
+        Console.ReadLine();
+    }
+}
