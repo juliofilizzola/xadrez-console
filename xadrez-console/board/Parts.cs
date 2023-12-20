@@ -1,13 +1,8 @@
 ﻿namespace xadrez_console.board;
 
-public class Parts {
+public class Parts(Board board, Color color) {
     public Position position  { get; set; }
-    public Color    color       { get; protected set; }
+    public Color    color     { get; protected set; } = color;
     public int      qMovement { get; protected set; }
-    public Board    board     { get; protected set; }
-
-    public Parts(Board board, Color color) {
-        this.board    = board;
-        this.color    = color;
-    }
+    public Board    board     { get; protected set; } = board;
 }

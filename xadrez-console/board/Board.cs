@@ -1,22 +1,35 @@
 ﻿namespace xadrez_console.board;
 
-public class Board {
-    public  int     line   { get; set; }
-    public  int     column { get; set; }
-    private Parts[,] parts;
+public class Board(int line, int column) {
+    public           int      Line   { get; set; } = line;
+    public           int      Column { get; set; } = column;
+    private  Parts[,] Parts = new Parts[line, column];
 
-    public Board(int line, int column) {
-        this.column = column;
-        this.line   = line;
-        parts        = new Parts[line, column];
+    public Parts Part(int linePart, int columnPart) {
+        return Parts[linePart, columnPart];
     }
 
-    public Parts Part(int line, int column) {
-        return parts[line, column];
+    public Parts Part(Position p) {
+        return Parts[p.Line, p.Column];
+    }
+
+    public bool ExistPart(Position p) {
+        PositionException(p);
+        return Part(p) != null;
     }
 
     public void IntroPart(Parts p, Position position) {
-        parts[position.line, position.column] = p;
+        Parts[position.Line, position.Column] = p;
         p.position                            = position;
+    }
+
+    public bool ValidPosition(Position p) {
+        return p.Line >= 0 && p.Line < Line && p.Column >= 0 && p.Column < Column;
+    }
+
+    public void PositionException(Position p) {
+        if (!ValidPosition(p)) {
+            throw new BoardExceptions("Position invalid");
+        }
     }
 }

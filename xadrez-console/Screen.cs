@@ -4,8 +4,8 @@ namespace xadrez_console;
 
 public class Screen {
     public static void ScreenBoard(Board board) {
-        for (var i = 0; i < board.line; i++) {
-            for (var j = 0; j < board.column; j++) {
+        for (var i = 0; i < board.Line; i++) {
+            for (var j = 0; j < board.Column; j++) {
                 var part = board.Part(i, j);
                 if (part == null) {
                     Console.Write("- ");

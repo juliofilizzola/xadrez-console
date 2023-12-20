@@ -2,8 +2,7 @@
 
 namespace xadrez_console.xadrez;
 
-public class Rook: Parts {
-    public Rook(Board board, Color color) : base(board, color){}
+public class Rook(Board board, Color color) : Parts(board, color) {
     public override string ToString() {
         return "R";
     }

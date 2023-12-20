@@ -2,8 +2,7 @@
 
 namespace xadrez_console.xadrez;
 
-public class Knight: Parts {
-    public Knight(Board board, Color color) : base(board, color) {}
+public class Knight(Board board, Color color) : Parts(board, color) {
     public override string ToString() {
         return "KG";
     }
