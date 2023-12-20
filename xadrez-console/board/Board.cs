@@ -18,6 +18,17 @@ public class Board(int line, int column) {
         return Part(p) != null;
     }
 
+
+    public Parts RemoveParts(Position p) {
+        var aux = Part(p);
+        if (aux == null) {
+            return null;
+        }
+
+        aux.position            = null;
+        Parts[p.Line, p.Column] = null;
+        return aux;
+    }
     public void IntroPart(Parts p, Position position) {
         if (ExistPart(position)) {
             throw new BoardExceptions("part already exists");
