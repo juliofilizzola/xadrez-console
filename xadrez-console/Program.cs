@@ -5,18 +5,23 @@ namespace xadrez_console;
 
 internal abstract class Program {
     private static void Main() {
-        var po = new PositionXadrez('h', 1);
-        Console.WriteLine(po);
-        Console.WriteLine(po.ToPosition());
-
-
         try {
-            var b = new Match();
-            b.PlaceParts();
-            Screen.ScreenBoard(b.Board);
-        } catch (BoardExceptions e) {
-            Console.WriteLine(e);
+            Match match = new Match();
+            while (!match.finished) {
+                Console.Clear();
+                Screen.ScreenBoard(match.Board);
+
+                Console.Write("Origen:");
+                var origin = Screen.ReadPosition().ToPosition();
+                Console.Write("Destiny:");
+                var destiny = Screen.ReadPosition().ToPosition();
+                match.exec(origin, destiny);
+            }
         }
-        Console.ReadLine();
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 }

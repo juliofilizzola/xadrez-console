@@ -1,13 +1,21 @@
-﻿using xadrez_console.board;
+﻿ using xadrez_console.board;
 
 namespace xadrez_console.xadrez;
 
 public class Match {
-    public  Board Board { get; private set; } = new(8, 8);
-    private int   _t             = 1;
-    private Color _playerCurrent = Color.White;
+    public  Board Board { get; private set; }
+    private int   _t;
+    private Color _playerCurrent;
+    public  bool  finished { get; private set; }
 
-    public void execut(Position origin, Position destiny) {
+    public Match() {
+        Board          = new(8, 8);
+        _t             = 1;
+        _playerCurrent = Color.White;
+        PlaceParts();
+    }
+
+    public void exec(Position origin, Position destiny) {
         var p = Board.RemoveParts(origin);
         p.incrementMovement();
         var PC = Board.RemoveParts(destiny);

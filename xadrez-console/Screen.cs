@@ -1,4 +1,5 @@
 ﻿using xadrez_console.board;
+using xadrez_console.xadrez;
 
 namespace xadrez_console;
 
@@ -20,6 +21,13 @@ public class Screen {
             Console.WriteLine();
         }
         Console.WriteLine("  a b c d e f g h");
+    }
+
+    public static PositionXadrez ReadPosition() {
+        string? s      = Console.ReadLine();
+        char   column = s[0];
+        int    line   = int.Parse(s[1] + "");
+        return new PositionXadrez(column, line);
     }
 
     private static void PrintPart(Parts parts) {
