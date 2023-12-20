@@ -19,6 +19,9 @@ public class Board(int line, int column) {
     }
 
     public void IntroPart(Parts p, Position position) {
+        if (ExistPart(position)) {
+            throw new BoardExceptions("part already exists");
+        }
         Parts[position.Line, position.Column] = p;
         p.position                            = position;
     }
